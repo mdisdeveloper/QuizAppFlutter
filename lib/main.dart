@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/answer.dart';
-
-import './question.dart';
+import 'package:quizapp/result.dart';
+import './quiz.dart';
+import './result.dart';
 
 // void main() {
 //   runApp(QuizApp());
@@ -20,25 +20,65 @@ class QuizApp extends StatefulWidget {
 
 // Is persistant
 class QuizAppState extends State<QuizApp> {
-  final questions = const [
+  final _questions = const [
     {
-      'questionText': 'What\'s your favourite animal?',
-      'answers' : ['Panda', 'Koala', 'Dog'],
+      'questionText': 'Do you like coming to the office every morning?',
+      'answers' : [
+        {'text': 'Absolutely, I enjoy sharing with collages', 'score': '1'},
+        {'text': 'Yes, I prefer going to the office', 'score': '2'},
+        {'text': 'I prefer working from home', 'score': '3'},
+        {'text': 'I find it boring', 'score': '4'},
+        ],
     },
     {
       'questionText': 'What\'s your favourite color?',
-      'answers' : ['Blue', 'Red', 'Black'],
+      'answers' : [
+        {'text': 'Red', 'score': '1'},
+        {'text': 'Blue', 'score': '2'},
+        {'text': 'Green', 'score': '3'},
+        {'text': 'Black', 'score': '4'},
+      ],
+    },
+    {
+      'questionText': 'What\'s your favourite animal?',
+      'answers' : [
+        {'text': 'Panda', 'score': '1'},
+        {'text': 'Panda', 'score': '2'},
+        {'text': 'Panda', 'score': '3'},
+        {'text': 'Panda', 'score': '4'},
+      ],
+    },
+    {
+      'questionText': 'What\'s your favourite car?',
+      'answers' : [
+        {'text': 'Mercedes', 'score': '1'},
+        {'text': 'Bmw', 'score': '2'},
+        {'text': 'Volkswagen', 'score': '3'},
+        {'text': 'Seat', 'score': '4'},
+      ],
     },
   ];
 
-  var questionIndex = 0;
+  var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void answerQuestion(){
+  void _resetQuiz(){
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = 0;
+      _totalScore = 0;
     });
-    if (questionIndex < questions.length){
+  }
 
+  void _answerQuestion(int score){
+    _totalScore += score;
+    print(score);
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+    if (_questionIndex < _questions.length){
+      print('We have more questions !');
+    } else {
+      print('No more questions ! ');
     }
   }
 
@@ -49,21 +89,14 @@ class QuizAppState extends State<QuizApp> {
         appBar: AppBar(
           title: const Text('Quiztionary'),
         ),
-        body: questionIndex < questions.length
-            ? Column (
-            children: [
-             Question(
-                questions[questionIndex]['questionText'] as String,
-              ),
-              ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
-                return Answer(answerQuestion, answer);
-              }).toList()
-            ],
-          )
-            : Center(
-          child: Text('you did it'),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+          answerQuestion: _answerQuestion,
+          questionIndex: _questionIndex,
+          questions: _questions,
+        )
+            : Result(_totalScore, _resetQuiz),
         ),
-      ),
     );
   }
 }
