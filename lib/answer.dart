@@ -8,7 +8,7 @@ class Answer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
         child: Text(answerText),
@@ -16,7 +16,6 @@ class Answer extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           primary: Colors.blue,
         ),
-
       ),
     );
   }

@@ -11,6 +11,8 @@ void main() => runApp(QuizApp());
 
 // Can be rebuild
 class QuizApp extends StatefulWidget {
+  const QuizApp({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -18,43 +20,43 @@ class QuizApp extends StatefulWidget {
   }
 }
 
-// Is persistant
+// Is persistent
 class QuizAppState extends State<QuizApp> {
   final _questions = const [
     {
       'questionText': 'Do you like coming to the office every morning?',
       'answers' : [
-        {'text': 'Absolutely, I enjoy sharing with collages', 'score': '1'},
-        {'text': 'Yes, I prefer going to the office', 'score': '2'},
-        {'text': 'I prefer working from home', 'score': '3'},
-        {'text': 'I find it boring', 'score': '4'},
+        {'text': 'Absolutely, I enjoy sharing with collages', 'score': 1},
+        {'text': 'Yes, I prefer going to the office', 'score': 2},
+        {'text': 'I prefer working from home', 'score': 3},
+        {'text': 'I find it boring', 'score': 4},
         ],
     },
     {
-      'questionText': 'What\'s your favourite color?',
+      'questionText': 'Choose one color:',
       'answers' : [
-        {'text': 'Red', 'score': '1'},
-        {'text': 'Blue', 'score': '2'},
-        {'text': 'Green', 'score': '3'},
-        {'text': 'Black', 'score': '4'},
+        {'text': 'White', 'score': 3},
+        {'text': 'Blue', 'score': 2},
+        {'text': 'Green', 'score': 4},
+        {'text': 'Black', 'score': 1},
       ],
     },
     {
       'questionText': 'What\'s your favourite animal?',
       'answers' : [
-        {'text': 'Panda', 'score': '1'},
-        {'text': 'Panda', 'score': '2'},
-        {'text': 'Panda', 'score': '3'},
-        {'text': 'Panda', 'score': '4'},
+        {'text': 'Panda', 'score': 1},
+        {'text': 'Panda', 'score': 2},
+        {'text': 'Panda', 'score': 3},
+        {'text': 'Panda', 'score': 4},
       ],
     },
     {
       'questionText': 'What\'s your favourite car?',
       'answers' : [
-        {'text': 'Mercedes', 'score': '1'},
-        {'text': 'Bmw', 'score': '2'},
-        {'text': 'Volkswagen', 'score': '3'},
-        {'text': 'Seat', 'score': '4'},
+        {'text': 'Mercedes', 'score': 1},
+        {'text': 'Bmw', 'score': 2},
+        {'text': 'Volkswagen', 'score': 3},
+        {'text': 'Seat', 'score': 4},
       ],
     },
   ];
@@ -71,7 +73,6 @@ class QuizAppState extends State<QuizApp> {
 
   void _answerQuestion(int score){
     _totalScore += score;
-    print(score);
     setState(() {
       _questionIndex = _questionIndex + 1;
     });

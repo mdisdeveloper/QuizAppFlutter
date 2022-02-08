@@ -10,13 +10,13 @@ class Result extends StatelessWidget {
   String get resultPhrase {
     var resultText = 'You did it';
     if (resultScore <= 6) {
-      resultText = 'D';
+      resultText = 'DOMINANCE';
     } else if (resultScore >= 7 && resultScore < 10) {
-      resultText = 'I';
+      resultText = 'INFLUENCE';
     } else if (resultScore >= 10 && resultScore < 14) {
-      resultText = 'S';
+      resultText = 'STEADINESS';
     } else if (resultScore >= 14) {
-      resultText = 'C';
+      resultText = 'CONSCIENTIOUSNESS';
     }
     return resultText;
   }
@@ -28,12 +28,12 @@ class Result extends StatelessWidget {
           children: <Widget>[
             Text(
           resultPhrase,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 36,
               fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            TextButton (child: Text('Restart Quiz!'), onPressed: resetHandler),
+            TextButton (child: const Text('Restart Quiz!'), onPressed: resetHandler),
           ],
         ),
     );
