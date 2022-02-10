@@ -32,7 +32,7 @@ class QuizAppState extends State<QuizApp> {
         {'text': 'I find it boring', 'score': 4},
         ],
     },
-    {
+    {  // for shortage a word use: \' for example,  What\'s
       'questionText': 'Choose one color:',
       'answers' : [
         {'text': 'White', 'score': 3},
@@ -42,12 +42,12 @@ class QuizAppState extends State<QuizApp> {
       ],
     },
     {
-      'questionText': 'What\'s your favourite animal?',
+      'questionText': 'What do you prefer?',
       'answers' : [
-        {'text': 'Panda', 'score': 1},
-        {'text': 'Panda', 'score': 2},
-        {'text': 'Panda', 'score': 3},
-        {'text': 'Panda', 'score': 4},
+        {'text': 'Learn new skills', 'score': 2},
+        {'text': 'Enhance your current skills', 'score': 1},
+        {'text': 'Refresh your skills from time to time', 'score': 4},
+        {'text': 'Compliment your skills with other similar', 'score': 3},
       ],
     },
     {
